@@ -1,0 +1,57 @@
+package com.javarush.task.task15.task1527;
+
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args){
+
+        Scanner scanner = new Scanner(System.in);
+        String stringURL = scanner.nextLine();
+
+
+        //String stringURL = "http://javarush.ru/alpha/index.html?obj=hhg&name=Amigo"; // для проверки
+        String substringUrl = stringURL.substring(stringURL.indexOf('?') + 1);
+
+
+        if(substringUrl.contains("obj")){
+
+            String[] arrSubstring = substringUrl.split("&");
+
+            for(String s: arrSubstring){
+                String [] sStrind = s.split("=");
+                System.out.print(sStrind[0] + " ");
+            }
+
+            System.out.println();
+
+            String[] arrObj = arrSubstring[0].split("=");
+
+            try {
+                alert(Double.parseDouble(arrObj[1]));
+            } catch (NumberFormatException e) {
+                alert(arrObj[1]);
+            }
+
+
+        } else{
+            String[] arrSubstring = substringUrl.split("&");
+
+            for(String s: arrSubstring){
+                String [] sStrind = s.split("=");
+                System.out.print(sStrind[0] + " ");
+            }
+        }
+
+
+
+    }
+
+    public static void alert(double value) {
+        System.out.println("double: " + value);
+    }
+
+    public static void alert(String value) {
+        System.out.println("String: " + value);
+    }
+}
